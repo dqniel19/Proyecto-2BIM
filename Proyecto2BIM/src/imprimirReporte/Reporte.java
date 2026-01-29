@@ -22,8 +22,8 @@ public class Reporte {
         int completadas = 0;
         int pendientes = 0;
         double porcentaje;
-        String[] nombresMeses = {"Enero", "Febrero", "Marzo", "Abril", "Mayo", 
-            "Junio", "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", 
+        String[] nombresMeses = {"Enero", "Febrero", "Marzo", "Abril", "Mayo",
+            "Junio", "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre",
             "Diciembre"};
 
         // arreglo bidimensional: mes * prioridad
@@ -69,27 +69,32 @@ public class Reporte {
 
             System.out.println();
         }
-        
+
         if (contador > 0) {
-            porcentaje = (double) completadas * 100 / contador;}
-        else {porcentaje = 00.00;
+            porcentaje = (double) completadas * 100 / contador;
+        } else {
+            porcentaje = 00.00;
         }
 
         System.out.println("Total de tareas: " + contador);
         System.out.println("Completadas: " + completadas);
         System.out.println("Pendientes: " + pendientes);
         System.out.println("Porcentaje completadas: " + porcentaje + "%");
-        
+
         System.out.println("\nResumen por mes y prioridad:");
         for (int i = 0; i < 12; i++) {
             if (resumen[i][0] > 0) {
-                System.out.printf("%s:\n", nombresMeses[i]);}
+                System.out.printf("%s: ", nombresMeses[i]);
+            }
             if (resumen[i][0] > 0) {
-                System.out.printf("Alta: %d", resumen[i][0]);}
+                System.out.printf("Alta: %d |", resumen[i][0]);
+            }
             if (resumen[i][1] > 0) {
-                System.out.printf("Media: %d", resumen[i][1]);}
+                System.out.printf("Media: %d |", resumen[i][1]);
+            }
             if (resumen[i][2] > 0) {
-                System.out.printf("Baja: %d", resumen[i][2]);}
+                System.out.printf("Baja: %d |", resumen[i][2]);
+            }
         }
-}
+    }
 }
