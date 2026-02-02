@@ -22,52 +22,54 @@ public class Reporte {
         int completadas = 0;
         int pendientes = 0;
         double porcentaje;
+        String reporte = "";
         String[] nombresMeses = {"Enero", "Febrero", "Marzo", "Abril", "Mayo",
             "Junio", "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre",
             "Diciembre"};
 
-        // arreglo bidimensional: mes * prioridad
-        // Se utilizará este arreglo para dar un reporte de las tareas POR MES
-        //   alta media baja
-        // m  0     0   1...
-        // e
-        // s
-        // e
-        // s
         int[][] resumen = new int[12][3];
 
-        System.out.println("\n----- REPORTE FINAL -----\n");
+        reporte = reporte + "\n----- REPORTE FINAL -----\n\n";
 
         for (int i = 0; i < contador; i++) {
 
-            System.out.println("Tarea " + (i + 1));
-            System.out.println("Nombre: " + tareas[i]);
-            System.out.println("Fecha: " + dias[i] + "/" + meses[i] + "/" + anios[i]);
-            System.out.println("Prioridad: " + tiposPrioridad[i]);
+            reporte = reporte + "Tarea " + (i + 1) + "\n";
+            reporte = reporte + "Nombre: " + tareas[i] + "\n";
+            reporte = reporte + "Fecha: " + dias[i] + "/" + meses[i] + "/" + anios[i] + "\n";
+            reporte = reporte + "Prioridad: " + tiposPrioridad[i] + "\n";
 
             if (estados[i] == 1) {
-                System.out.println("Estado: Completada");
+                reporte = reporte + "Estado: Completada\n";
                 completadas = completadas + 1;
             } else {
-                System.out.println("Estado: Pendiente");
+                reporte = reporte + "Estado: Pendiente\n";
                 pendientes = pendientes + 1;
             }
 
+            reporte = reporte + "\n";
+
             // llenar arreglo bidimensional
             int mesP = meses[i] - 1; // se utiliza - 1 para que coincida con el mes que ingresó el usuario
-            int prioridadP;
+            int prioridadP;          // con la finalidad de que coincida en la posición de los arreglos
 
-            if (tiposPrioridad[i].equals("Alta")) {
-                prioridadP = 0;
+            if (tiposPrioridad[i].equals("Alta")) { // Se almacena en el arreglo prioridadP el valor correspondiente
+                prioridadP = 0;                     // al tipo de prioridad clasificado
             } else if (tiposPrioridad[i].equals("Media")) {
                 prioridadP = 1;
             } else {
                 prioridadP = 2;
             }
 
-            resumen[mesP][prioridadP] = resumen[mesP][prioridadP] + 1;
+            resumen[mesP][prioridadP] = resumen[mesP][prioridadP] + 1; // 0 (de la posición por defecto) + 1 
+            // arreglo bidimensional: mes * prioridad
+            // Se utilizará este arreglo para dar un reporte de las tareas POR MES
+            //   alta0 media1 baja2
+            // m   0     0      0...
+            // e
+            // s
+            // e
+            // s
 
-            System.out.println();
         }
 
         if (contador > 0) {
@@ -76,25 +78,33 @@ public class Reporte {
             porcentaje = 00.00;
         }
 
-        System.out.println("Total de tareas: " + contador);
-        System.out.println("Completadas: " + completadas);
-        System.out.println("Pendientes: " + pendientes);
-        System.out.println("Porcentaje completadas: " + porcentaje + "%");
+        reporte = reporte + "Total de tareas: " + contador + "\n";
+        reporte = reporte + "Completadas: " + completadas + "\n";
+        reporte = reporte + "Pendientes: " + pendientes + "\n";
+        reporte = reporte + "Porcentaje completadas: " + porcentaje + "%\n";
 
-        System.out.println("\nResumen por mes y prioridad:");
+        reporte = reporte + "\nResumen por mes y prioridad:\n";
         for (int i = 0; i < 12; i++) {
-            if (resumen[i][0] > 0) {
-                System.out.printf("%s: ", nombresMeses[i]);
-            }
-            if (resumen[i][0] > 0) {
-                System.out.printf("Alta: %d |", resumen[i][0]);
-            }
-            if (resumen[i][1] > 0) {
-                System.out.printf("Media: %d |", resumen[i][1]);
-            }
-            if (resumen[i][2] > 0) {
-                System.out.printf("Baja: %d |", resumen[i][2]);
+
+            if (resumen[i][0] > 0 || resumen[i][1] > 0 || resumen[i][2] > 0) {
+
+                reporte = reporte + nombresMeses[i] + ": ";
+
+                if (resumen[i][0] > 0) {
+                    reporte = reporte + "Alta: " + resumen[i][0] + "\t";
+                }
+                if (resumen[i][1] > 0) {
+                    reporte = reporte + "Media: " + resumen[i][1] + "\t";
+                }
+                if (resumen[i][2] > 0) {
+                    reporte = reporte + "Baja: " + resumen[i][2] + "\t";
+                }
+
+                reporte = reporte + "\n";
             }
         }
+        
+        System.out.println(reporte);
+
     }
 }
