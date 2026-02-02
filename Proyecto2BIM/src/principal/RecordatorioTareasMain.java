@@ -55,7 +55,8 @@ public class RecordatorioTareasMain {
                     anios[contador] = Funciones.obtenerAnio();
 
                     int prioridad = Funciones.obtenerPrioridad();
-                    tiposPrioridad[contador] = Funciones.clasificarPrioridad(prioridad);
+                    tiposPrioridad[contador] = 
+                            Funciones.clasificarPrioridad(prioridad);
 
                     estados[contador] = Funciones.obtenerEstado();
 
@@ -69,7 +70,7 @@ public class RecordatorioTareasMain {
 
                     ArchivoTareas.guardarTarea(registro);
 
-                    contador++;
+                    contador = contador + 1;
 
                     rta = Funciones.preguntarContinuar();
                     if (!rta.equalsIgnoreCase("s")) {

@@ -1,0 +1,16 @@
+1. Inicio
+2. Se da a elegir la opcion (1. Agregar tarea, 2. Ver reporte de tareas, 3. Salir)
+3. Si el usuario elige la primera opcion
+	4. Se llama a las funciones respectiva
+	5. Se piden los datos de la tarea: nombre, dia, mes, fecha, prioridad y estado
+	6. Los datos se almacenan en arreglos unidimensionales respectivamente
+	6,1. Estos arreglos son enviados a las variables respectivas en el main, para ser posteriormente enviadas a las funciones respectivas como argumentos
+	7. Preguntar si se desea ingresar otra tarea, si el usuario ingresa s
+		8. Se repite el proceso
+	9. De lo contrario si el usuario ingresa algo diferente a s
+		10. Se realiza el proceso de imprimir el reporte
+11. Si el usuario elige la segunda opción
+	12. Se reciben todos los argumentos
+	13. Se crea el arreglo unidimensional para los nombres de los meses
+	14. Se crea un arreglo bidimensional[12][3] donde se almacenaran las tareas clasificadas por prioridad de cada mes
+	15. Se concatena el mensaje reporte
