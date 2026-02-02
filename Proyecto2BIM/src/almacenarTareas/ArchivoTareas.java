@@ -15,7 +15,8 @@ public class ArchivoTareas {
     public static void guardarTarea(String registro) {
         // método para guardar tareas en el .txt
         try {
-            FileOutputStream fos = new FileOutputStream("data/tareas.txt", true);
+            FileOutputStream fos = new FileOutputStream(
+                System.getProperty("user.dir") + "/data/tareas.txt", true);
             OutputStreamWriter osw = new OutputStreamWriter(fos);
             Formatter salida = new Formatter(osw);
 
@@ -27,7 +28,6 @@ public class ArchivoTareas {
         }
     }
 
-    
     public static int cargarTareas(
             // método que lee el .txt y llena los arreglos para 
             String[] tareas,
@@ -40,14 +40,15 @@ public class ArchivoTareas {
         int contador = 0;
 
         try {
-            File archivo = new File("data/tareas.txt");
+            File archivo = new File(
+                System.getProperty("user.dir") + "/data/tareas.txt");
             Scanner lector = new Scanner(archivo);
 
             while (lector.hasNextLine()) {
 
                 String linea = lector.nextLine();
 
-                // 🔹 Se separa por ;
+                // se separa la linea
                 String[] partes = linea.split(";");
 
                 tareas[contador] = partes[0];
@@ -66,7 +67,6 @@ public class ArchivoTareas {
             System.err.println("No existe el archivo todavía.");
         }
 
-        return contador;  
+        return contador;
     }
 }
-
