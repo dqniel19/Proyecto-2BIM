@@ -59,7 +59,7 @@ public class RecordatorioTareasMain {
 
                     estados[contador] = Funciones.obtenerEstado();
 
-                    // 🔴 AQUI SE GUARDA EN EL ARCHIVO
+                    // se separan los datos para guardarse en el archivo
                     String registro = tareas[contador] + ";"
                             + dias[contador] + ";"
                             + meses[contador] + ";"
@@ -78,7 +78,8 @@ public class RecordatorioTareasMain {
                 }
             }
 
-            // 🟩 OPCION 2 → LEER ARCHIVO Y HACER REPORTE
+            // opcion 2 = lee archivo e imprime reporte, si no se ingresa nada aun
+            // aparecerá un msj junto al menú
             if (opcion == 2) {
 
                 String[] tareas = new String[100];
@@ -96,7 +97,7 @@ public class RecordatorioTareasMain {
                         tiposPrioridad, estados, contador);
             }
 
-            // 🟥 SALIR
+            // opcion 3 = sale del programa
             if (opcion == 3) {
                 bandera = false;
             }

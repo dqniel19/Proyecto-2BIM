@@ -57,7 +57,7 @@ public class ArchivoTareas {
                 prioridades[contador] = partes[4];
                 estados[contador] = Integer.parseInt(partes[5]);
 
-                contador++;
+                contador = contador + 1;
             }
 
             lector.close();
@@ -66,7 +66,7 @@ public class ArchivoTareas {
             System.err.println("No existe el archivo todavía.");
         }
 
-        return contador;  // 🔴 CLAVE para el reporte
+        return contador;  
     }
 }
 
